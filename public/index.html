@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Greetings Earthlings</title>
+    <style>
+        /* h1 {color:white;} */
+        body {
+            /* background-image: url(./images/bg.gif); */
+            /* background-repeat:repeat;  */
+            color: greenyellow;
+            background-color: black;
+        }
+        </style>
+</head>
+<body>
+    <h1>Hello World</h1>
+
+    <div id="mountNode"></div>
+
+    <script id="entry-template" type="text/x-handlebars-template">
+        <div>
+            <ul>
+            {{#each users}}
+                <li>{{name}}</li>
+            {{/each}}
+            </ul>
+        </div>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>  
+    <script src="./scripts/main.js"></script>
+</body>
+</html>
