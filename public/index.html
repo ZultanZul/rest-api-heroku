@@ -1,36 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Greetings Earthlings</title>
-    <style>
-        /* h1 {color:white;} */
-        body {
-            /* background-image: url(./images/bg.gif); */
-            /* background-repeat:repeat;  */
-            color: greenyellow;
-            background-color: black;
-        }
-        </style>
-</head>
-<body>
-    <h1>Hello World</h1>
+    <title>RESTful API with CRUD 101</title>
 
-    <div id="mountNode"></div>
+
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+
+    <!-- Handlebars setup -->
 
     <script id="entry-template" type="text/x-handlebars-template">
         <div>
-            <ul>
+            <table>
+                <tr><td class="header">Name</td><td class="header">Email</td><td class="header">Phone</td><td class="header">Avatar</td><td class="header"></td></tr>
             {{#each users}}
-                <li>{{name}}</li>
+                <tr data-id="{{_id}}"><td>{{name}}</td><td>{{email}}</td><td>{{phone}}</td><td>{{avatar}}</td><td><button class="delete_btn">Delete</button></td></tr>
             {{/each}}
-            </ul>
+            </table>
         </div>
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>  
+    
+
+    <!-- Header Bar with Nav -->
+
+
+    <nav>
+        <div class="nav-wrapper light-green accent-3">
+            <a href="#" class="brand-logo black-text">First REST API</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="https://github.com/ZultanZul/rest-api-heroku" class="black-text">Github</a></li>
+                <li><a href="https://codepen.io/Zultan/" class="black-text">Codepen</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <!-- Begin with the Tabs -->
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs light-green accent-3">
+                    <li class="tab col s4"><a class="active black-text" href="#test1">List Users</a></li>
+                    <li class="tab col s4"><a href="#test2" class="black-text">Create User</a></li>
+                    <li class="tab col s4"><a href="#test3" class="black-text">Edit User</a></li>
+                </ul>
+            </div>
+
+            <!-- List Users -->
+            <div id="test1" class="col s12">
+                <div id="mountNode"></div>
+            </div>
+
+
+
+
+            <!-- Create Users -->
+            <div id="test2" class="col s12">
+                <div class="row">
+                    <form class="col s12" id="addForm">
+                        <div class="row">
+
+                            <div class="input-field col s6">
+                                <input id="name" type="text" class="validate white-text">
+                                <label for="name">Name</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input id="email" type="email" class="validate white-text">
+                                <label for="email">Email</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input id="phone" type="text" class="validate white-text">
+                                <label for="phone">Phone Number</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input id="avatar" type="text" class="validate white-text">
+                                <label for="avatar">Avatar</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input id="type" type="text" class="white-text">
+                                <label for="type">User Level</label>
+                            </div>
+
+                            <button class="btn  light-green accent-3 black-text" type="submit" name="action">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Edit User -->
+            <div id="test3" class="col s12">Test 3</div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
+
 </html>

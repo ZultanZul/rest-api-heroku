@@ -2,8 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const PORT = process.env.PORT || 3333;
-const DATABASE = process.env.DATABASE || 'mongodb://localhost/first_servers';
+const {
+    MONGODB_URI
+} = process.env;
+
+
+const PORT = 3333;
+const DATABASE =  MONGODB_URI || 'mongodb://localhost/first_servers';
 
 
 const app = express();
@@ -41,8 +46,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: {type:String,required:true},
     email: {type:String,required:true},
-    phone: Number,
-    admin: Boolean,
+    phone: String,
+    type: String,
     avatar: String
 },{timestamps:{createdAt: 'createdAt'}});
 

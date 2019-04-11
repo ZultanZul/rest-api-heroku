@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+    color: greenyellow;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+
+
+td.header {
+    border-bottom: 1px solid lightgreen;
+}
+
+.delete_btn {
+    color: black;
+    background-color: greenyellow;
+    cursor: pointer;
+    border: none;
+    padding: 3px;
+}
+
+.delete_btn:hover {
+    background-color: aquamarine;
+}
