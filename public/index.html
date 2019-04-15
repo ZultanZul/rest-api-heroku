@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./styles/style.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
@@ -20,13 +22,26 @@
     <script id="entry-template" type="text/x-handlebars-template">
         <div>
             <table>
-                <tr><td class="header">Name</td><td class="header">Email</td><td class="header">Phone</td><td class="header">Avatar</td><td class="header"></td></tr>
+                <tr><td class="header">Name</td><td class="header">Email</td><td class="header">Phone</td><td class="header">Avatar</td><td class="header" style="width: 150px;"></td></tr>
             {{#each users}}
-                <tr data-id="{{_id}}"><td>{{name}}</td><td>{{email}}</td><td>{{phone}}</td><td>{{avatar}}</td><td><button class="delete_btn">Delete</button></td></tr>
+                <tr data-id="{{_id}}">
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{phone}}</td>
+                    <td>{{avatar}}</td>
+                    <td style="width: 150px;">
+                        <button data-id="{{_id}}" class="btn_green edit_btn"><i class="far fa-edit"></i>Edit</button>
+                        <button data-id="{{_id}}" class="btn_green delete_btn"><i class="fas fa-user-minus"></i>Delete</button>
+                    </td>
+                </tr>
             {{/each}}
             </table>
         </div>
     </script>
+
+
+
+    
 
     
 
@@ -52,49 +67,65 @@
         <div class="row">
             <div class="col s12">
                 <ul class="tabs light-green accent-3">
-                    <li class="tab col s4"><a class="active black-text" href="#test1">List Users</a></li>
-                    <li class="tab col s4"><a href="#test2" class="black-text">Create User</a></li>
-                    <li class="tab col s4"><a href="#test3" class="black-text">Edit User</a></li>
+                    <li class="tab col s4"><a class="active black-text" id="listTabTrigger" href="#listTab">List Users</a></li>
+                    <li class="tab col s4"><a class="black-text" id="addTabTrigger" href="#addTab"><i class="fas fa-user-plus"></i>Create User</a></li>
+                    <li class="tab col s4 disabled"><a class="black-text" id="updateTabTrigger" href="#updateTab"><i class="far fa-edit"></i> Edit User</a></li>
                 </ul>
             </div>
 
+
             <!-- List Users -->
-            <div id="test1" class="col s12">
-                <div id="mountNode"></div>
+            <div id="listTab" class="col s12">
+                <div id="mountNode">There are currently no users to display</div>
             </div>
 
 
 
 
             <!-- Create Users -->
-            <div id="test2" class="col s12">
+            <div id="addTab" class="col s12">
                 <div class="row">
-                    <form class="col s12" id="addForm">
+                    <form class="col s12" id="addForm" name="addForm">
                         <div class="row">
 
                             <div class="input-field col s6">
-                                <input id="name" type="text" class="validate white-text">
-                                <label for="name">Name</label>
+                                <input 
+                                id="name-create"
+                                type="text"
+                                class="validate white-text"/>
+                                <label for="name-create">Name</label>
                             </div>
 
                             <div class="input-field col s6">
-                                <input id="email" type="email" class="validate white-text">
-                                <label for="email">Email</label>
+                                <input
+                                id="email-create"
+                                type="email"
+                                class="validate white-text"/>
+                                <label for="email-create">Email</label>
                             </div>
 
                             <div class="input-field col s6">
-                                <input id="phone" type="text" class="validate white-text">
-                                <label for="phone">Phone Number</label>
+                                <input
+                                id="phone-create"
+                                type="text"
+                                class="validate white-text"/>
+                                <label for="phone-create">Phone Number</label>
                             </div>
 
                             <div class="input-field col s6">
-                                <input id="avatar" type="text" class="validate white-text">
-                                <label for="avatar">Avatar</label>
+                                <input
+                                id="avatar-create"
+                                type="text"
+                                class="validate white-text">
+                                <label for="avatar-create">Avatar</label>
                             </div>
 
                             <div class="input-field col s6">
-                                <input id="type" type="text" class="white-text">
-                                <label for="type">User Level</label>
+                                <input
+                                id="type-create"
+                                type="text"
+                                class="white-text">
+                                <label for="type-create">User Level</label>
                             </div>
 
                             <button class="btn  light-green accent-3 black-text" type="submit" name="action">
@@ -106,7 +137,58 @@
             </div>
 
             <!-- Edit User -->
-            <div id="test3" class="col s12">Test 3</div>
+            <div id="updateTab" class="col s12">                    
+                <div class="row">
+                    <form class="col s12" id="updateForm" name="updateForm">
+                            <input type="hidden" name="id" id="id">
+                        <div class="row">        
+                            <div class="input-field col s6">
+                                <input 
+                                id="name-update"
+                                type="text"
+                                class="validate white-text"/>
+                                <label for="name-update">Name</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input
+                                id="email-update"
+                                type="email"
+                                class="validate white-text"/>
+                                <label for="email-update">Email</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input
+                                id="phone-update"
+                                type="text"
+                                class="validate white-text"/>
+                                <label for="phone-update">Phone Number</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input
+                                id="avatar-update"
+                                type="text"
+                                class="validate white-text">
+                                <label for="avatar-update">Avatar</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input
+                                id="type-update"
+                                type="text"
+                                class="white-text">
+                                <label for="type-update">User Level</label>
+                            </div>
+
+                            <button class="btn  light-green accent-3 black-text" type="submit" name="action">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

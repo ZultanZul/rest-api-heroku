@@ -13,7 +13,7 @@ td.header {
     border-bottom: 1px solid lightgreen;
 }
 
-.delete_btn {
+.btn_green {
     color: black;
     background-color: greenyellow;
     cursor: pointer;
@@ -21,6 +21,18 @@ td.header {
     padding: 3px;
 }
 
-.delete_btn:hover {
+.disabled {
+    opacity: 0.5;
+}
+
+.btn_green i {
+    margin-right: 5px;
+}
+
+.btn_green:hover {
     background-color: aquamarine;
+}
+
+.nav-wrapper {
+    padding: 0 20px;
 }
