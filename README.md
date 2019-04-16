@@ -7,8 +7,8 @@ A RESTful API that connects to a MongoDB database using Mongoose to create Schem
 const userSchema = new Schema({
     name: {type:String,required:true},
     email: {type:String,required:true},
-    phone: Number,
-    admin: Boolean,
+    phone: String,
+    admin: String,
     avatar: String
 },{timestamps:{createdAt: 'createdAt'}});
 ~~~~
