@@ -2,13 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+
+
+const PORT = process.env.PORT || 3333;
+// const DATABASE =  MONGODB_URI || 'mongodb://localhost/first_servers';
+
+
 const {
     MONGODB_URI
 } = process.env;
-
-
-const PORT = 3333;
-const DATABASE =  MONGODB_URI || 'mongodb://localhost/first_servers';
 
 
 const app = express();
@@ -29,10 +31,10 @@ app.use(bodyParser.json());
 //////////////////
 
 mongoose.Promise = global.Promise;
-var promise = mongoose.connect(DATABASE);
+var promise = mongoose.connect(MONGODB_URI ||'mongodb://localhost/first_servers',{useNewUrlParser:true});
 
 promise.then(function(db) {
-  console.log(`DATABASE CONNECTED!! ${DATABASE}`);
+  console.log(`DATABASE CONNECTED!!`);
 }).catch(function(err){
   console.log('CONNECTION ERROR', err);
 });
